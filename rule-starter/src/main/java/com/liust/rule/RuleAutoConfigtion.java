@@ -24,7 +24,7 @@ public class RuleAutoConfigtion {
 
     @Bean
     public RuleCore ruleCore() {
-        return new RuleCore(STRING_MAP);
+        return new RuleCore(STRING_MAP,ruleConfig);
     }
 
 

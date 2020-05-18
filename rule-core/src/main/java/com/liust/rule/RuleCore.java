@@ -1,8 +1,10 @@
 package com.liust.rule;
 
+import com.liust.rule.properties.RuleProperties;
 import com.liust.rule.service.RuleService;
 import com.liust.rule.util.LoadFlieUtils;
 
+import java.io.FileNotFoundException;
 import java.util.Map;
 
 /*
@@ -13,12 +15,15 @@ public class RuleCore {
 
     private  Map<String, RuleService> STRINGMAP;
 
-    public RuleCore(Map<String, RuleService> STRINGMAP) {
+    private RuleProperties ruleProperties;
+
+    public RuleCore(Map<String, RuleService> STRINGMAP,RuleProperties ruleProperties) {
         this.STRINGMAP=STRINGMAP;
+        this.ruleProperties=ruleProperties;
     }
 
-    public void createOrUpdate(String javaCode, String filePath, String javaFuliName){
-        LoadFlieUtils.dynamic(javaCode,filePath,javaFuliName);
+    public void createOrUpdate(String javaCode,  String javaFuliName) throws FileNotFoundException {
+        LoadFlieUtils.dynamic(javaCode,ruleProperties.getFilePath(),javaFuliName);
     }
 
     public RuleService getRule(String temName){
