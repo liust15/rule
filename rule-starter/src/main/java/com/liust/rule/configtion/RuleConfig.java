@@ -10,14 +10,15 @@ import org.springframework.util.StringUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import lombok.Data;
-
-@Data
 @ConfigurationProperties("example.service")
 public class RuleConfig implements RuleProperties {
 
     @Value("filePath")
     private String filePath;
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
 
     @Override
     public String getFilePath() throws FileNotFoundException {
