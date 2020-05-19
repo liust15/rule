@@ -23,7 +23,7 @@ public class RuleCore {
     }
 
     public void createOrUpdate(String javaCode,  String javaFuliName) throws FileNotFoundException {
-        LoadFlieUtils.dynamic(javaCode,ruleProperties.getFilePath(),javaFuliName);
+        Object o=  LoadFlieUtils.dynamic(javaCode,ruleProperties.getFilePath(),javaFuliName);
     }
 
     public RuleService getRule(String temName){
