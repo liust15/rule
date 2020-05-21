@@ -19,13 +19,14 @@ public class LoadFlieUtils {
     public static Object dynamic(String javaCode, String filePath,String javaFuliName) {
         // 把 java String 存储到文件
         JavaCompiler javaCompiler = ToolProvider.getSystemJavaCompiler();
-        try (FileWriter fw = new FileWriter(new File(filePath+javaFuliName.replace(".","/")+ JAVA_EXC));
+        String JavaPath=filePath+"/"+javaFuliName.replace(".","/")+ JAVA_EXC;
+        try (FileWriter fw = new FileWriter(new File(JavaPath));
              StandardJavaFileManager standardFileManager = javaCompiler.getStandardFileManager(null, null, null)) {
             fw.write(javaCode);
             fw.flush();
             fw.close();
 
-            Iterable<? extends JavaFileObject> iterable = standardFileManager.getJavaFileObjects(filePath);
+            Iterable<? extends JavaFileObject> iterable = standardFileManager.getJavaFileObjects(JavaPath);
 
             // 执行编译任务
             CompilationTask task = javaCompiler.getTask(null, standardFileManager, null, null, null, iterable);

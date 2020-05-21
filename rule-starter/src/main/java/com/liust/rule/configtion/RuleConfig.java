@@ -10,10 +10,9 @@ import org.springframework.util.StringUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-@ConfigurationProperties("example.service")
+@ConfigurationProperties(prefix = "rule.file",ignoreInvalidFields = true)
 public class RuleConfig implements RuleProperties {
 
-    @Value("filePath")
     private String filePath;
 
     public void setFilePath(String filePath) {
@@ -23,8 +22,7 @@ public class RuleConfig implements RuleProperties {
     @Override
     public String getFilePath() throws FileNotFoundException {
         if(StringUtils.isEmpty(filePath)){
-            File file = ResourceUtils.getFile("classpath:template");
-            filePath=file.getPath();
+            filePath= ResourceUtils.getFile("classpath:").getPath();
         }
         return filePath;
     }

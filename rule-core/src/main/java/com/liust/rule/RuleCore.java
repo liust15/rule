@@ -22,17 +22,17 @@ public class RuleCore {
         this.ruleProperties=ruleProperties;
     }
 
-    public void createOrUpdate(String javaCode,  String javaFuliName) throws FileNotFoundException {
-        Object o=  LoadFlieUtils.dynamic(javaCode,ruleProperties.getFilePath(),javaFuliName);
-        STRINGMAP.put(javaFuliName, (RuleService) o);
+    public void createOrUpdate(String javaCode,  String javaFullName) throws FileNotFoundException {
+        Object o=  LoadFlieUtils.dynamic(javaCode,ruleProperties.getFilePath(),javaFullName);
+        STRINGMAP.put(javaFullName, (RuleService) o);
     }
 
-    public RuleService getRule(String temName){
-        return STRINGMAP.get(temName);
+    public RuleService getRule(String javaFullName){
+        return STRINGMAP.get(javaFullName);
     }
 
-    public RuleService remove(String temName){
-        return STRINGMAP.remove(temName);
+    public RuleService remove(String javaFullName){
+        return STRINGMAP.remove(javaFullName);
     }
 
 }
