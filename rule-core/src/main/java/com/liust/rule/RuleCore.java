@@ -24,6 +24,7 @@ public class RuleCore {
 
     public void createOrUpdate(String javaCode,  String javaFuliName) throws FileNotFoundException {
         Object o=  LoadFlieUtils.dynamic(javaCode,ruleProperties.getFilePath(),javaFuliName);
+        STRINGMAP.put(javaFuliName, (RuleService) o);
     }
 
     public RuleService getRule(String temName){
